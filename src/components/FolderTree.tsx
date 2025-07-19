@@ -70,7 +70,7 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
         <div key={item.id}>
           <div
             className={`flex items-center px-3 py-2 cursor-pointer hover:bg-gray-100 transition-colors rounded-lg group ${
-              isSelected ? 'bg-blue-50 border-l-4 border-blue-500' : ''
+              isSelected ? 'bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500' : ''
             }`}
             style={{ marginLeft: indentLevel }}
             onClick={() => onItemClick(item)}
@@ -81,7 +81,7 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
                 e.stopPropagation();
                 onToggleExpand(folder);
               }}
-              className="mr-2 p-1 hover:bg-gray-200 rounded transition-colors"
+              className="mr-2 p-1 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors"
             >
               {folder.isExpanded ? (
                 <FolderOpen className="w-4 h-4 text-blue-600" />
@@ -90,7 +90,7 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
               )}
             </button>
             
-            <span className="flex-1 text-sm font-medium text-gray-700">
+            <span className="flex-1 text-sm font-medium text-gray-700 dark:text-gray-300">
               {item.name}
             </span>
 
@@ -100,19 +100,19 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
                   e.stopPropagation();
                   onCreateFolder(item.id);
                 }}
-                className="p-1 hover:bg-gray-200 rounded transition-colors"
+                className="p-1 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors"
                 title="Create folder"
               >
-                <Plus className="w-3 h-3 text-gray-500" />
+                <Plus className="w-3 h-3 text-gray-500 dark:text-gray-400" />
               </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   handleRightClick(e, item);
                 }}
-                className="p-1 hover:bg-gray-200 rounded transition-colors"
+                className="p-1 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors"
               >
-                <MoreVertical className="w-3 h-3 text-gray-500" />
+                <MoreVertical className="w-3 h-3 text-gray-500 dark:text-gray-400" />
               </button>
             </div>
           </div>
@@ -137,17 +137,17 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
         <div
           key={item.id}
           className={`flex items-center px-3 py-2 cursor-pointer hover:bg-gray-100 transition-colors rounded-lg group ${
-            isSelected ? 'bg-blue-50 border-l-4 border-blue-500' : ''
+            isSelected ? 'bg-blue-50 dark:bg-blue-900/30 border-l-4 border-blue-500' : ''
           }`}
           style={{ marginLeft: indentLevel + 28 }}
           onClick={() => onItemClick(item)}
           onContextMenu={(e) => handleRightClick(e, item)}
         >
           {getFileIcon(file.name)}
-          <span className="ml-2 flex-1 text-sm text-gray-700">{file.name}</span>
+          <span className="ml-2 flex-1 text-sm text-gray-700 dark:text-gray-300">{file.name}</span>
           
           <div className="opacity-0 group-hover:opacity-100 flex items-center space-x-1 transition-opacity">
-            <span className="text-xs text-gray-500 mr-2">
+            <span className="text-xs text-gray-500 dark:text-gray-400 mr-2">
               {(file.size / 1024).toFixed(1)} KB
             </span>
             <button
@@ -155,10 +155,10 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
                 e.stopPropagation();
                 // Handle download
               }}
-              className="p-1 hover:bg-gray-200 rounded transition-colors"
+              className="p-1 hover:bg-gray-200 dark:hover:bg-gray-600 rounded transition-colors"
               title="Download"
             >
-              <Download className="w-3 h-3 text-gray-500" />
+              <Download className="w-3 h-3 text-gray-500 dark:text-gray-400" />
             </button>
           </div>
         </div>
@@ -174,7 +174,7 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
 
       {contextMenu && (
         <div
-          className="fixed bg-white border shadow-lg rounded-lg py-2 z-50 min-w-[160px]"
+          className="fixed bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 shadow-lg rounded-lg py-2 z-50 min-w-[160px]"
           style={{ left: contextMenu.x, top: contextMenu.y }}
         >
           <button
@@ -182,7 +182,7 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
               onRenameItem(contextMenu.item);
               setContextMenu(null);
             }}
-            className="w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center space-x-2 text-sm"
+            className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2 text-sm text-gray-700 dark:text-gray-300"
           >
             <Edit2 className="w-4 h-4" />
             <span>Rename</span>
@@ -192,7 +192,7 @@ export const FolderTree: React.FC<FolderTreeProps> = ({
               onDeleteItem(contextMenu.item);
               setContextMenu(null);
             }}
-            className="w-full px-4 py-2 text-left hover:bg-gray-100 flex items-center space-x-2 text-sm text-red-600"
+            className="w-full px-4 py-2 text-left hover:bg-gray-100 dark:hover:bg-gray-700 flex items-center space-x-2 text-sm text-red-600 dark:text-red-400"
           >
             <Trash2 className="w-4 h-4" />
             <span>Delete</span>
