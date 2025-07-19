@@ -64,19 +64,19 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onUpload, isUploading })
       <div
         className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
           dragActive
-            ? 'border-blue-500 bg-blue-50'
-            : 'border-gray-300 bg-gray-50 hover:bg-gray-100'
+            ? 'border-blue-500 bg-blue-50 dark:bg-blue-900/20'
+            : 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600'
         }`}
         onDragEnter={handleDrag}
         onDragLeave={handleDrag}
         onDragOver={handleDrag}
         onDrop={handleDrop}
       >
-        <Upload className="w-12 h-12 text-gray-400 mx-auto mb-4" />
-        <p className="text-lg font-medium text-gray-700 mb-2">
+        <Upload className="w-12 h-12 text-gray-400 dark:text-gray-500 mx-auto mb-4" />
+        <p className="text-lg font-medium text-gray-700 dark:text-gray-300 mb-2">
           Drop files here or click to browse
         </p>
-        <p className="text-sm text-gray-500 mb-4">
+        <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
           Supports PDF, DOC, DOCX, PPT, PPTX files
         </p>
         <input
@@ -97,24 +97,24 @@ export const FileUpload: React.FC<FileUploadProps> = ({ onUpload, isUploading })
 
       {selectedFiles.length > 0 && (
         <div className="space-y-2">
-          <h3 className="font-medium text-gray-700">Selected Files:</h3>
+          <h3 className="font-medium text-gray-700 dark:text-gray-300">Selected Files:</h3>
           {selectedFiles.map((file, index) => (
             <div
               key={index}
-              className="flex items-center justify-between p-3 bg-white border rounded-lg shadow-sm"
+              className="flex items-center justify-between p-3 bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-600 rounded-lg shadow-sm"
             >
               <div className="flex items-center space-x-3">
                 <File className="w-5 h-5 text-blue-500" />
                 <div>
-                  <p className="font-medium text-gray-700">{file.name}</p>
-                  <p className="text-sm text-gray-500">{formatFileSize(file.size)}</p>
+                  <p className="font-medium text-gray-700 dark:text-gray-300">{file.name}</p>
+                  <p className="text-sm text-gray-500 dark:text-gray-400">{formatFileSize(file.size)}</p>
                 </div>
               </div>
               <button
                 onClick={() => removeFile(index)}
-                className="p-1 hover:bg-gray-100 rounded transition-colors"
+                className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded transition-colors"
               >
-                <X className="w-4 h-4 text-gray-500" />
+                <X className="w-4 h-4 text-gray-500 dark:text-gray-400" />
               </button>
             </div>
           ))}
